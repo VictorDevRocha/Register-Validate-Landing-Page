@@ -32,8 +32,10 @@
                 type="text"
                 name="firstname"
                 placeholder="Digite seu primeiro nome"
-                required
+                class="require"
+                oninput="nameValidate()"
               />
+            <span class="spans-required">Mínimo de 3 caracteres</span>
             </div>
 
             <div class="input-box">
@@ -43,9 +45,12 @@
                 type="text"
                 name="lastname"
                 placeholder="Digite seu sobrenome"
-                required
+                class="require"
+                oninput="lastNameValidate()"
               />
+              <span class="spans-required">Mínimo de 3 caracteres</span>
             </div>
+
             <div class="input-box">
               <label for="email">E-mail</label>
               <input
@@ -53,8 +58,10 @@
                 type="email"
                 name="email"
                 placeholder="Digite seu e-mail"
-                required
+                class="require"
+                oninput="emailValidate()"
               />
+              <span class="spans-required">Digite um email válido</span>
             </div>
 
             <div class="input-box">
@@ -63,9 +70,11 @@
                 id="number"
                 type="tel"
                 name="number"
-                placeholder="(xx) xxxx-xxxx"
-                required
+                placeholder="xx xxxxx xxxx"
+                class="require"
+                oninput="cellValidate()"
               />
+              <span class="spans-required">Digite somente o número</span>
             </div>
 
             <div class="input-box">
@@ -75,8 +84,10 @@
                 type="password"
                 name="password"
                 placeholder="Digite sua senha"
-                required
+                class="require"
+                oninput="passValidate()"
               />
+            <span class="spans-required">Mínimo de 8 caracteres</span>
             </div>
 
             <div class="input-box">
@@ -86,8 +97,10 @@
                 type="password"
                 name="confirmPassword"
                 placeholder="Digite sua senha novamente"
-                required
+                class="require"
+                oninput="repetPassValidate()"
               />
+            <span class="spans-required">As senhas devem ser compatíveis</span>
             </div>
           </div>
 
@@ -98,7 +111,7 @@
 
             <div class="gender-group">
               <div class="gender-input">
-                <input id="female" type="radio" name="gender" />
+                <input id="female" type="radio" name="gender" required/>
                 <label for="female">Feminino</label>
               </div>
 
@@ -125,5 +138,7 @@
         </form>
       </div>
     </div>
+
+    <script src="index.js"></script>
   </body>
 </html>
