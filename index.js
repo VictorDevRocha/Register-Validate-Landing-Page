@@ -4,16 +4,19 @@ const form = document.querySelector(".form")
 const campos = document.querySelectorAll(".require")
 const spans = document.querySelectorAll(".spans-required")
 
+// FUNÇÃO QUE COLOCA A BORDA VERMELHA E MOSTRA O SPAN
 function setError(index) {
   campos[index].style.border = '2px solid #e63636';
   spans[index].style.display = 'flex';
 }
 
+// FUNÇÃO QUE RETIRA A BORDA E TIRA O SPAN
 function removeError(index) {
   campos[index].style.border = '';
   spans[index].style.display = 'none';
 }
 
+// ENVIAR OS DADOS
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   nameValidate();
@@ -21,8 +24,12 @@ form.addEventListener('submit', (event) => {
   emailValidate();
   cellValidate();
   passValidate();
-  repetPassValidate();
 
+  if (!campos[5].value) {
+    setError(5)
+  }
+
+  // VERIFICA SE OS DADOS FORAM CADASTRADOS CORRETAMENTE E SE CASO SIM ENVIA OS DADOS SE CASO NÃO EMITE O ALERTA E FINALIZA ALI O SUBMIT
   if (campos[0].value.length >= 3
     && campos[1].value.length >= 3
     && emailValidate()
@@ -36,10 +43,12 @@ form.addEventListener('submit', (event) => {
     campos[4].value = ""
     campos[5].value = ""
   } else {
-    alert("erro")
+    alert("Verifique se preencheu todos os dados corretamente")
+    return false
   }
 });
 
+// FUNÇÕES PARA VALIDAR OS INPUTS
 function nameValidate() {
   return campos[0].value.length < 3 ? setError(0) : removeError(0);
 }
