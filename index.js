@@ -3,6 +3,7 @@ const cellRegex = /^((1[1-9])|([2-9][0-9]))((3[0-9]{3}[0-9]{4})|(9[0-9]{3}[0-9]{
 const form = document.querySelector(".form")
 const campos = document.querySelectorAll(".require")
 const spans = document.querySelectorAll(".spans-required")
+const finish = document.querySelector(".finishSpan")
 
 // FUNÇÃO QUE COLOCA A BORDA VERMELHA E MOSTRA O SPAN
 function setError(index) {
@@ -42,6 +43,7 @@ form.addEventListener('submit', (event) => {
     campos[3].value = ""
     campos[4].value = ""
     campos[5].value = ""
+    finish.style.display = "block"
   } else {
     alert("Verifique se preencheu todos os dados corretamente")
     return false
