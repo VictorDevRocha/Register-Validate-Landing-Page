@@ -28,12 +28,7 @@ form.addEventListener('submit', (event) => {
     && cellValidate()
     && campos[4].value.length >= 8
     && campos[4].value == campos[5].value) {
-    campos[0].value = ""
-    campos[1].value = ""
-    campos[2].value = ""
-    campos[3].value = ""
-    campos[4].value = ""
-    campos[5].value = ""
+    resetForm()
     finish.style.display = "block"
   } else {
     alert("Verifique se preencheu todos os dados corretamente")
@@ -81,4 +76,13 @@ function cellValidate() {
     removeError(3);
     return true
   }
+}
+
+function resetForm() {
+  campos[0].value = ""
+  campos[1].value = ""
+  campos[2].value = ""
+  campos[3].value = ""
+  campos[4].value = ""
+  campos[5].value = ""
 }
