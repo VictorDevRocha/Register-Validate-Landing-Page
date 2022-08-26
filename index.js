@@ -1,5 +1,5 @@
-const emailRegex = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})$/;
-const cellRegex = /^((1[1-9])|([2-9][0-9]))((3[0-9]{3}[0-9]{4})|(9[0-9]{3}[0-9]{5}))$/;
+const emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.?([a-z]+)?$/i;
+const cellRegex = /^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/;
 const form = document.querySelector(".form")
 const campos = document.querySelectorAll(".require")
 const spans = document.querySelectorAll(".spans-required")
@@ -20,15 +20,6 @@ function removeError(index) {
 // ENVIAR OS DADOS
 form.addEventListener('submit', (event) => {
   event.preventDefault();
-  nameValidate();
-  lastNameValidate();
-  emailValidate();
-  cellValidate();
-  passValidate();
-
-  if (!campos[5].value) {
-    setError(5)
-  }
 
   // VERIFICA SE OS DADOS FORAM CADASTRADOS CORRETAMENTE E SE CASO SIM ENVIA OS DADOS SE CASO NÃO EMITE O ALERTA E FINALIZA ALI O SUBMIT
   if (campos[0].value.length >= 3
@@ -51,38 +42,43 @@ form.addEventListener('submit', (event) => {
 });
 
 // FUNÇÕES PARA VALIDAR OS INPUTS
-function nameValidate() {
-  return campos[0].value.length < 3 ? setError(0) : removeError(0);
-}
 
-function lastNameValidate() {
+campos[0].addEventListener("input", () => {
+  return campos[0].value.length < 3 ? setError(0) : removeError(0);
+})
+
+campos[1].addEventListener("input", () => {
   return campos[1].value.length < 3 ? setError(1) : removeError(1);
-}
+})
+
+campos[2].addEventListener("input", emailValidate)
+
+campos[3].addEventListener("input", cellValidate)
+
+campos[4].addEventListener("input", () => {
+  return campos[4].value.length < 8 ? setError(4) : removeError(4);
+})
+
+campos[5].addEventListener("input", () => {
+  return campos[4].value == campos[5].value ? removeError(5) : setError(5);
+})
 
 function emailValidate() {
   if (!emailRegex.test(campos[2].value)) {
     setError(2)
+    return false
   } else {
     removeError(2);
+    return true
   }
-
-  return true
 }
 
 function cellValidate() {
   if (!cellRegex.test(campos[3].value)) {
     setError(3)
+    return false
   } else {
     removeError(3);
+    return true
   }
-
-  return true
-}
-
-function passValidate() {
-  return campos[4].value.length < 8 ? setError(4) : removeError(4);
-}
-
-function repetPassValidate() {
-  return campos[4].value == campos[5].value ? removeError(5) : setError(5);
 }

@@ -33,7 +33,6 @@
                 name="firstname"
                 placeholder="Digite seu primeiro nome"
                 class="require"
-                oninput="nameValidate()"
               />
             <span class="spans-required">Mínimo de 3 caracteres</span>
             </div>
@@ -46,7 +45,6 @@
                 name="lastname"
                 placeholder="Digite seu sobrenome"
                 class="require"
-                oninput="lastNameValidate()"
               />
               <span class="spans-required">Mínimo de 3 caracteres</span>
             </div>
@@ -59,20 +57,18 @@
                 name="email"
                 placeholder="Digite seu e-mail"
                 class="require"
-                oninput="emailValidate()"
               />
               <span class="spans-required">Digite um email válido</span>
             </div>
 
             <div class="input-box">
-              <label for="number">Celular</label>
+              <label for="tell">Celular</label>
               <input
-                id="number"
-                type="tel"
-                name="number"
+                id="telefone"
+                type="tell"
+                name="tell"
                 placeholder="xx xxxxx xxxx"
                 class="require"
-                oninput="cellValidate()"
               />
               <span class="spans-required">Digite somente o número</span>
             </div>
@@ -85,7 +81,6 @@
                 name="password"
                 placeholder="Digite sua senha"
                 class="require"
-                oninput="passValidate()"
               />
             <span class="spans-required">Mínimo de 8 caracteres</span>
             </div>
@@ -98,7 +93,6 @@
                 name="confirmPassword"
                 placeholder="Digite sua senha novamente"
                 class="require"
-                oninput="repetPassValidate()"
               />
             <span class="spans-required">As senhas devem ser compatíveis</span>
             </div>
